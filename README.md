@@ -24,7 +24,7 @@ services:
     depends_on:
       - traefik
     container_name: n2m-service
-    image: ghcr.io/sethvoltz/n2m-service:latest
+    image: ghcr.io/sethvoltz/n2m-service:main
     restart: unless-stopped
     networks:
       - t2_proxy
@@ -36,7 +36,7 @@ services:
       - "traefik.http.routers.n2m-service-rtr.rule=HostHeader(`n2m-service.$DOMAINNAME`)"
       - "traefik.http.routers.n2m-service-rtr.middlewares=authelia@docker" # Authelia
       - "traefik.http.routers.n2m-service-rtr.service=n2m-service-svc"
-      - "traefik.http.services.n2m-service-svc.loadbalancer.server.port=8080"
+      - "traefik.http.services.n2m-service-svc.loadbalancer.server.port=3000"
 ```
 
 ## Usage
