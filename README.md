@@ -24,7 +24,7 @@ services:
     depends_on:
       - traefik
     container_name: n2m-service
-    image: IMAGEHERE:latest
+    image: ghcr.io/sethvoltz/n2m-service:latest
     restart: unless-stopped
     networks:
       - t2_proxy
@@ -38,3 +38,11 @@ services:
       - "traefik.http.routers.n2m-service-rtr.service=n2m-service-svc"
       - "traefik.http.services.n2m-service-svc.loadbalancer.server.port=8080"
 ```
+
+## Usage
+
+With a Notion integration attached to the database you want to convert, you can use the following URL to convert a page to Markdown:
+
+`https://n2m-service.$DOMAINNAME/page/$PAGE_UUID`
+
+While debugging, you can use the `?pretty` query parameter to get a more human-readable output.
