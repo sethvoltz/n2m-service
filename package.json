@@ -1,0 +1,25 @@
+{
+  "name": "n2m-service",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "DEBUG=n2md-service:* nodemon ./bin/www",
+    "docker:install": "rm -rf node_modules && npm ci --only=production && npm cache clean --force",
+    "docker:build": "docker build -t n2m-service .",
+    "docker:run": "docker run --env-file .env -it --rm -p 3000:3000 n2m-service"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.13",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "morgan": "~1.9.1",
+    "notion-to-md": "^3.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

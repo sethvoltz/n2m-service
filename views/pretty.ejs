@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <style type="text/css" media="screen">
+    #editor { 
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body class="container">
+
+<div id="editor"><%= markdown %></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.31.2/ace.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setOptions({
+      useWrapMode: true,   // wrap text to view
+      // indentedSoftWrap: true,
+      hardWrap: true,
+      readOnly: true,
+      // behavioursEnabled: false, // disable autopairing of brackets and tags
+      // showLineNumbers: false, // hide the gutter
+      theme: "ace/theme/monokai"
+    });
+    editor.session.setMode("ace/mode/markdown");
+</script>
+
+</body>
+</html>
